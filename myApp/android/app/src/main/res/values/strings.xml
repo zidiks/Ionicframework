@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">VSMU Plus</string>
+    <string name="title_activity_main">VSMU Plus</string>
+    <string name="package_name">com.vsmuplus.app</string>
+    <string name="custom_url_scheme">com.vsmuplus.app</string>
+</resources>

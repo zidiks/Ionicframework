@@ -1,0 +1,13 @@
+{
+  "appId": "com.vsmuplus.app",
+  "appName": "VSMU Plus",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
