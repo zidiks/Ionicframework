@@ -17,16 +17,8 @@ export class IdeaService {
   public ideaCollection: AngularFirestoreCollection<Idea>;
  
   constructor(private afs: AngularFirestore) {
-    this.ideaCollection = this.afs.collection<Idea>('ideas');
-    this.ideas = this.ideaCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
+    this.ideaCollection = this.afs.collection<Idea>('ideas', ref => ref.orderBy('date', 'desc'));
+    this.ideas = this.ideaCollection.valueChanges();
   }
  
   getIdeas(): Observable<Idea[]> {

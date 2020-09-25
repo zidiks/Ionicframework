@@ -12,6 +12,7 @@ import { Idea, IdeaService } from '../services/posts.service';
 export class Tab1Page implements OnInit {
 
   public ideas: Observable<Idea[]>;
+  public ideasDom;
 
   constructor(
     private menu: MenuController,
@@ -20,38 +21,12 @@ export class Tab1Page implements OnInit {
 
     ngOnInit() {
       this.ideas = this.ideaService.getIdeas();
+      //this.ideasDom = JSON.parse(JSON.stringify(this.ideas));
     }
 
   showCatMenu() {
     this.menu.open('cat');
   }
-  public itemss = ['test1', 
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-  'test2',
-];
 
   doRefresh(event) {
     console.log('Begin async operation');
