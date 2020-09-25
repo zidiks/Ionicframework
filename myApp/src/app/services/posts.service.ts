@@ -13,8 +13,8 @@ export interface Idea {
   providedIn: 'root'
 })
 export class IdeaService {
-  private ideas: Observable<Idea[]>;
-  private ideaCollection: AngularFirestoreCollection<Idea>;
+  public ideas: Observable<Idea[]>;
+  public ideaCollection: AngularFirestoreCollection<Idea>;
  
   constructor(private afs: AngularFirestore) {
     this.ideaCollection = this.afs.collection<Idea>('ideas');

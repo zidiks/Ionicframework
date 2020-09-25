@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+
+import { Observable } from 'rxjs';
+import { Idea, IdeaService } from '../services/posts.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,7 +11,16 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 })
 export class Tab1Page implements OnInit {
 
-  constructor(private menu: MenuController) { }
+  public ideas: Observable<Idea[]>;
+
+  constructor(
+    private menu: MenuController,
+    public ideaService: IdeaService
+    ) { }
+
+    ngOnInit() {
+      this.ideas = this.ideaService.getIdeas();
+    }
 
   showCatMenu() {
     this.menu.open('cat');
@@ -51,7 +62,6 @@ export class Tab1Page implements OnInit {
     }, 2000);
   }
 
- ngOnInit() {
- }
+ 
  
 }
