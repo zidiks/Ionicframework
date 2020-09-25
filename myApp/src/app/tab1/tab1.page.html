@@ -29,46 +29,14 @@
             </ion-buttons>
         </ion-toolbar>
     </ion-header>
-
-    <ion-card routerLink="/post">
-        <img src="https://ionicframework.com/docs/demos/api/card/madison.jpg" />
-        <ion-card-header>
-            <ion-card-subtitle>мероприятия</ion-card-subtitle>
-            <ion-card-title>Идет набор в секцию по американскому футболу</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <ion-icon name="at-outline"></ion-icon>
-            <ion-label>
-                БРСМ
-            </ion-label>
-        </ion-card-content>
-    </ion-card>
-
-    <ion-card routerLink="/post">
-        <img src="https://ionicframework.com/docs/demos/api/card/madison.jpg" />
-        <ion-card-header>
-            <ion-card-subtitle>мероприятия</ion-card-subtitle>
-            <ion-card-title>Идет набор в секцию по американскому футболу</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <ion-icon name="at-outline"></ion-icon>
-            <ion-label>
-                БРСМ
-            </ion-label>
-        </ion-card-content>
-    </ion-card>
-
-    <ion-card routerLink="/post">
-        <img src="https://ionicframework.com/docs/demos/api/card/madison.jpg" />
-        <ion-card-header>
-            <ion-card-subtitle>мероприятия</ion-card-subtitle>
-            <ion-card-title>Идет набор в секцию по американскому футболу</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <ion-icon name="at-outline"></ion-icon>
-            <ion-label>
-                БРСМ
-            </ion-label>
-        </ion-card-content>
-    </ion-card>
+    <ion-virtual-scroll [items]="itemss" approxItemHeight="320px">
+        <ion-card *virtualItem="let item; let itemBounds = bounds;" routerLink="/post">
+            <ion-card-header>
+                <ion-card-title>{{ item }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores deleniti, porro, tenetur, reprehenderit praesentium facere nesciunt adipisci dolor fuga ipsum aliquid repellendus. Quas commodi similique voluptatibus rerum ea, voluptatem
+                accusamus.
+            </ion-card-content>
+        </ion-card>
+    </ion-virtual-scroll>
 </ion-content>

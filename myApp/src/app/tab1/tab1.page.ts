@@ -9,11 +9,38 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 })
 export class Tab1Page implements OnInit {
 
-  constructor(private menu: MenuController, private firestore: AngularFirestore) { }
+  constructor(private menu: MenuController) { }
 
   showCatMenu() {
     this.menu.open('cat');
   }
+  public itemss = ['test1', 
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+  'test2',
+];
 
   doRefresh(event) {
     console.log('Begin async operation');
@@ -24,11 +51,7 @@ export class Tab1Page implements OnInit {
     }, 2000);
   }
 
- 
-
  ngOnInit() {
-   console.log(this.firestore
-    .doc('ideas/JHuXRxI9pnovamFCzAj3').valueChanges() )
  }
  
 }
