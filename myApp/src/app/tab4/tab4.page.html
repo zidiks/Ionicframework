@@ -1,17 +1,57 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 4
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Профиль
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 4</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Профиль</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-  <app-explore-container name="Tab 4 page"></app-explore-container>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle>ЗДРАВСТВУЙТЕ</ion-card-subtitle>
+            <ion-card-title>Владимир</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+    </ion-card>
+
+    <ion-list>
+        <ion-list-header>Контент</ion-list-header>
+        <ion-item>
+            <ion-icon slot="start" size='small' name="bookmarks-outline"></ion-icon>
+            <ion-label>Закладки</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" size='small' name="map-outline"></ion-icon>
+            <ion-label>Карта университета</ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-list-header>Настройки</ion-list-header>
+        <ion-item>
+            <ion-icon slot="start" size='small' name="trash-outline"></ion-icon>
+            <ion-label>Очистить кеш</ion-label>
+        </ion-item>
+        <ion-list-header>Дополнительно</ion-list-header>
+        <ion-item>
+            <ion-icon slot="start" size='small' name="help-outline"></ion-icon>
+            <ion-label>Помощь</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" size='small' name="information-outline"></ion-icon>
+            <ion-label>О приложении</ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-text color="dark">
+        <h5 style="text-align: center; font-weight: 200;">version 1.0.1</h5>
+    </ion-text>
 </ion-content>

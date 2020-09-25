@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyDZuwWfpWoWbh2JdHaHVHqlASZi5ERaIx8",
+    authDomain: "vsmuplusapp.firebaseapp.com",
+    databaseURL: "https://vsmuplusapp.firebaseio.com",
+    projectId: "vsmuplusapp",
+    storageBucket: "vsmuplusapp.appspot.com",
+    messagingSenderId: "482258719582",
+    appId: "1:482258719582:web:85a4d1cbebc21ddfc3b5cf"
+  }
 };
 
 /*
