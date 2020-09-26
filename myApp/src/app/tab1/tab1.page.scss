@@ -21,3 +21,7 @@
         ion-virtual-scroll {
             transition: .4s !important;
         }
+        
+        ion-refresher {
+            z-index: 10;
+        }
