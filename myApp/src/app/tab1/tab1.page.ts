@@ -31,7 +31,7 @@ export class Tab1Page implements OnInit, OnChanges {
           console.log('scroll to top to have new content!');
           this.presentToast();
         }
-        
+        this.presentToast();
       });
     }
 
@@ -60,6 +60,14 @@ export class Tab1Page implements OnInit, OnChanges {
       message: 'Контент обновился!',
       position: 'top',
       color: "success",
+      buttons: [
+        {
+          text: 'Обновить',
+          handler: () => {
+            console.log('Favorite clicked');
+          }
+        }
+      ],
       duration: 15000
     });
     toast.present();
