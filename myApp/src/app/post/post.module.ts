@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule} from '@ionic/angular';
 
 import { PostPageRoutingModule } from './post-routing.module';
 
@@ -17,4 +17,7 @@ import { PostPage } from './post.page';
   ],
   declarations: [PostPage]
 })
-export class PostPageModule {}
+export class PostPageModule implements OnInit {    
+  ngOnInit() {
+  }
+}

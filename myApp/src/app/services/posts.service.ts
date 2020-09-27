@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export interface Idea {
   id?: string,
   name: string,
-  notes: string
+  ncategory: string
 }
  
 @Injectable({
@@ -15,9 +15,17 @@ export interface Idea {
 export class IdeaService {
   public ideas: Observable<Idea[]>;
   public ideaCollection: AngularFirestoreCollection<Idea>;
+  
  
   constructor(private afs: AngularFirestore) {
-    this.ideaCollection = this.afs.collection<Idea>('ideas', ref => ref.orderBy('date', 'desc'));
+  }
+ 
+  getPosts(category): Observable<Idea[]>  {
+    if (category == 'all') {
+      this.ideaCollection = this.afs.collection<Idea>('ideas', ref => ref.orderBy('date', 'desc'));
+    } else {
+      this.ideaCollection = this.afs.collection<Idea>('ideas', ref => ref.where('category', '==', category).orderBy('date', 'desc'));
+    }
     this.ideas = this.ideaCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
@@ -25,9 +33,6 @@ export class IdeaService {
         return { id, ...data };
       }))
     );
-  }
- 
-  getIdeas(): Observable<Idea[]>  {
     return this.ideas;
   }
  
@@ -39,17 +44,5 @@ export class IdeaService {
         return idea
       })
     );
-  }
- 
-  addIdea(idea: Idea): Promise<DocumentReference> {
-    return this.ideaCollection.add(idea);
-  }
- 
-  updateIdea(idea: Idea): Promise<void> {
-    return this.ideaCollection.doc(idea.id).update({ name: idea.name, notes: idea.notes });
-  }
- 
-  deleteIdea(id: string): Promise<void> {
-    return this.ideaCollection.doc(id).delete();
   }
 }

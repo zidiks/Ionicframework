@@ -1,9 +1,7 @@
-import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuController, ToastController, IonContent } from '@ionic/angular';
 
-import { Observable } from 'rxjs';
-import { Idea, IdeaService } from '../services/posts.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { IdeaService } from '../services/posts.service';
 
 @Component({
   selector: 'app-tab1',
@@ -15,7 +13,8 @@ export class Tab1Page implements OnInit {
   @ViewChild('pageTop') ionContent: IonContent;
   public posts: object;
   public uploadStatus;
-  public scrollPost: number = 0;
+  public changeCategpryStatus: boolean = false;
+  public currentCategory: string = 'Лента';
 
   public scrollHeigth: number = 10;
   constructor(
@@ -25,8 +24,29 @@ export class Tab1Page implements OnInit {
     ) { }
 
     ngOnInit() {
-      this.uploadStatus = this.ideaService.getIdeas().subscribe((data) => {
-        if (!this.posts || this.scrollHeigth < 10) {
+      this.getContent('all');
+    }
+
+  showCatMenu() {
+    this.menu.open('categories');
+  }
+
+  hideCatMenu() {
+    this.menu.close('categories');
+  }
+
+  async presentToast(options) {
+    const toast = await this.toastController.create(options);
+    toast.present();
+  }
+
+  getContent(category) {
+    this.uploadStatus = this.ideaService.getPosts(category).subscribe((data) => {
+      if (this.changeCategpryStatus) {
+        this.posts = data;
+        this.changeCategpryStatus = false;
+      } else {
+        if (!this.posts || this.scrollHeigth <= 10) {
           if (this.posts) this.presentToast({
             message: 'Контент обновился!',
             position: 'top',
@@ -51,16 +71,39 @@ export class Tab1Page implements OnInit {
             duration: 15000
           });
         }
-      });
+      }
+    });
+  }
+
+  logScrolling($event) {
+    this.scrollHeigth = $event.detail.scrollTop;
+  }
+
+  changeCategory(category) {
+    this.changeCategpryStatus = true;
+    this.uploadStatus.unsubscribe();
+    this.getContent(category);
+    this.hideCatMenu();
+    switch (category) {
+      case 'all':
+        this.currentCategory = 'Лента';
+        break;
+      case 'sport':
+        this.currentCategory = 'Спорт';
+        break;
+      case 'stud-life':
+        this.currentCategory = 'Студ. жизнь';
+        break;
+      case 'since':
+        this.currentCategory = 'Наука';
+        break;
+      case 'events':
+        this.currentCategory = 'Мероприятия';
+        break;
+      case 'homes':
+        this.currentCategory = 'Общежития';
+        break;
     }
-
-  showCatMenu() {
-    this.menu.open('cat');
   }
 
-  async presentToast(options) {
-    const toast = await this.toastController.create(options);
-    toast.present();
-  }
- 
 }

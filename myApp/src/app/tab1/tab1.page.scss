@@ -1,27 +1,22 @@
-        #custom-cat-menu-icon {
-            margin-bottom: 0.2rem;
-            margin-right: 0.4rem;
-        }
-        
-        ion-card-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        
-        ion-card-content ion-icon {
-            font-size: 1.3rem;
-            margin-top: 0.1rem;
-        }
-        
-        ion-card-title {
-            font-size: 1.5rem;
-        }
-        
-        ion-virtual-scroll {
-            transition: .4s !important;
-        }
-        
-        ion-refresher {
-            z-index: 10;
-        }
+      ion-card-content {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+      }
+      
+      ion-card-content ion-icon {
+          font-size: 1.3rem;
+          margin-top: 0.1rem;
+      }
+      
+      ion-card-title {
+          font-size: 1.5rem;
+      }
+      
+      ion-virtual-scroll {
+          transition: .4s !important;
+      }
+      
+      ion-refresher {
+          z-index: 10;
+      }
