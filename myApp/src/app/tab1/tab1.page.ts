@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page implements OnInit, OnChanges {
+export class Tab1Page implements OnInit {
 
   @ViewChild('pageTop') ionContent: IonContent;
   public posts: object;
@@ -35,7 +35,6 @@ export class Tab1Page implements OnInit, OnChanges {
           });
           this.posts = data;
         } else {
-          console.log('scroll to top to have new content!');
           this.presentToast({
             message: 'Контент обновился!',
             position: 'top',
@@ -55,33 +54,13 @@ export class Tab1Page implements OnInit, OnChanges {
       });
     }
 
-    ngOnChanges(changes: SimpleChanges) {
-  }
-
   showCatMenu() {
     this.menu.open('cat');
-  }
-
-  doRefresh(event) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
-    }, 2000);
-  }
-
-  logScrolling($event) {
-    this.scrollHeigth = $event.detail.scrollTop;
   }
 
   async presentToast(options) {
     const toast = await this.toastController.create(options);
     toast.present();
-  }
-
-  getScrollTop() {
-    this.ionContent.scrollToTop();
   }
  
 }
