@@ -1,5 +1,5 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { MenuController, ToastController } from '@ionic/angular';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { MenuController, ToastController, IonContent } from '@ionic/angular';
 
 import { Observable } from 'rxjs';
 import { Idea, IdeaService } from '../services/posts.service';
@@ -12,26 +12,46 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class Tab1Page implements OnInit, OnChanges {
 
+  @ViewChild('pageTop') ionContent: IonContent;
   public posts: object;
   public uploadStatus;
+  public scrollPost: number = 0;
 
   public scrollHeigth: number = 10;
   constructor(
     private menu: MenuController,
     public ideaService: IdeaService,
-    public toastController: ToastController
+    public toastController: ToastController,
     ) { }
 
     ngOnInit() {
       this.uploadStatus = this.ideaService.getIdeas().subscribe((data) => {
         if (!this.posts || this.scrollHeigth < 10) {
-          if (this.posts) this.presentToast();
+          if (this.posts) this.presentToast({
+            message: 'Контент обновился!',
+            position: 'top',
+            color: "success",
+            duration: 5000
+          });
           this.posts = data;
         } else {
           console.log('scroll to top to have new content!');
-          this.presentToast();
+          this.presentToast({
+            message: 'Контент обновился!',
+            position: 'top',
+            color: "success",
+            buttons: [
+              {
+                text: 'Обновить',
+                handler: () => {
+                  this.ionContent.scrollToTop(500);
+                  this.posts = data;
+                }
+              }
+            ],
+            duration: 15000
+          });
         }
-        this.presentToast();
       });
     }
 
@@ -55,22 +75,13 @@ export class Tab1Page implements OnInit, OnChanges {
     this.scrollHeigth = $event.detail.scrollTop;
   }
 
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Контент обновился!',
-      position: 'top',
-      color: "success",
-      buttons: [
-        {
-          text: 'Обновить',
-          handler: () => {
-            console.log('Favorite clicked');
-          }
-        }
-      ],
-      duration: 15000
-    });
+  async presentToast(options) {
+    const toast = await this.toastController.create(options);
     toast.present();
+  }
+
+  getScrollTop() {
+    this.ionContent.scrollToTop();
   }
  
 }
