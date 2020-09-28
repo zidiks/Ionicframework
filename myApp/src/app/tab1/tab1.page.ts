@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuController, ToastController, IonContent } from '@ionic/angular';
 
-import { IdeaService } from '../services/posts.service';
+import { PostsService } from '../services/posts.service';
 
 @Component({
   selector: 'app-tab1',
@@ -19,7 +19,7 @@ export class Tab1Page implements OnInit {
   public scrollHeigth: number = 10;
   constructor(
     private menu: MenuController,
-    public ideaService: IdeaService,
+    public ideaService: PostsService,
     public toastController: ToastController,
     ) { }
 

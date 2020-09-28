@@ -17,7 +17,7 @@
     </ion-content>
 </ion-menu>
 
-<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)" [fullscreen]="true" id="home" force-overscroll='true' #pageTop>
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)" [fullscreen]="true" id="home" force-overscroll='false' #pageTop>
     <ion-header collapse="condense">
         <ion-toolbar>
             <ion-title size="large">{{ currentCategory }}</ion-title>
@@ -27,11 +27,14 @@
         </ion-toolbar>
     </ion-header>
     <ion-virtual-scroll id="lenta-ion-virtual-scroll" [items]="(posts)" approxItemHeight="320px">
-        <ion-card style="height: 300px !important;" *virtualItem="let item; let itemBounds = bounds;" routerLink="/post">
+        <ion-card style="height: auto !important;" *virtualItem="let item; let itemBounds = bounds;" routerLink="/post">
+            <ion-thumbnail>
+                <ion-img [src]="item.img"></ion-img>
+            </ion-thumbnail>
             <ion-card-header>
                 <ion-card-title>{{ item.name }}</ion-card-title>
             </ion-card-header>
-            <ion-card-content>{{ item.text }}</ion-card-content>
+            <ion-card-content>{{ item.date }}</ion-card-content>
         </ion-card>
     </ion-virtual-scroll><br>
 </ion-content>

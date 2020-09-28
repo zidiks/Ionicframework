@@ -12,7 +12,7 @@ export interface Idea {
 @Injectable({
   providedIn: 'root'
 })
-export class IdeaService {
+export class PostsService {
   public ideas: Observable<Idea[]>;
   public ideaCollection: AngularFirestoreCollection<Idea>;
   
