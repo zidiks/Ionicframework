@@ -94,7 +94,7 @@ export class Tab1Page implements OnInit {
       case 'stud-life':
         this.currentCategory = 'Студ. жизнь';
         break;
-      case 'since':
+      case 'sience':
         this.currentCategory = 'Наука';
         break;
       case 'events':
